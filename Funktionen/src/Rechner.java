@@ -2,18 +2,23 @@
 public class Rechner {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println(iterativeSumme(5));
-		System.out.println(iterativesProdukt(5));
-		System.out.println(iterativePotenz(5,25));
-		System.out.println(rekursiveSumme(5));
-		System.out.println(rekursivesProdukt(5));
-		System.out.println(rekursivePotenz(5,25));
+		// TODO Auto-generated method stub		
+		System.out.println(rekursiveSumme(5000));
+		System.out.println(rekursivesProdukt(50));
+		System.out.println(rekursivePotenz(50,5));
+		System.out.println(endRekursiveSumme(5000));
+		System.out.println(endRekursivesProdukt(50));
+		System.out.println(endRekursivePotenz(50,5));
+		// Zeitmessung bringt nichts, sogar mit float kommt keine Zeit heraus
 	}
 
 
-	public static long iterativeSumme(long anz) {
-		long result = 1;
+	public static int iterativeSumme(int anz) {
+		int result = 1;
+		
+		if(anz <= 0) {
+			return -1;
+		}
 		
 		while(anz > 1) {
 			result += anz;
@@ -22,8 +27,12 @@ public class Rechner {
 		return result;
 	}
 	
-	public static long iterativesProdukt(long anz) {
-		long result = 1;
+	public static int iterativesProdukt(int anz) {
+		int result = 1;
+		
+		if(anz <= 0) {
+			return -1;
+		}
 		
 		while(anz > 1) {
 			result *= anz;
@@ -32,9 +41,13 @@ public class Rechner {
 		return result;
 	}
 	
-	public static long iterativePotenz(long anz, long hoch) {
+	public static int iterativePotenz(int anz, int hoch) {
 
-		long result = anz;
+		int result = anz;
+		
+		if(anz <= 0) {
+			return -1;
+		}
 		
 		while(hoch > 1) {
 			result *= anz;
@@ -44,27 +57,90 @@ public class Rechner {
 	}
 
 	
-	public static long rekursiveSumme(long anz) {
-		if(anz <= 1) {
-			return 1;
-		}else {
-			return anz + rekursiveSumme(anz - 1);
+	public static int rekursiveSumme(int anz) {
+		long zeit = System.currentTimeMillis();
+		if(anz <= 0) {
+			return -1;
 		}
+		if(anz <= 1) {
+			System.out.println("Zeit ist:" + (System.currentTimeMillis() - zeit));
+			return 1;
+		}
+			return anz + rekursiveSumme(anz - 1);
+		
 	}
 	
-	public static long rekursivesProdukt(long anz) {
-		if(anz <= 1) {
-			return 1;
-		}else {
-			return anz * rekursivesProdukt(anz - 1);
+	public static int rekursivesProdukt(int anz) {
+		long zeit = System.currentTimeMillis();
+		if(anz <= 0) {
+			return -1;
 		}
+		if(anz <= 1) {
+			System.out.println("Zeit ist:" + (System.currentTimeMillis() - zeit));
+			return 1;
+		}
+			return anz * rekursivesProdukt(anz - 1);
+		
 	}
 
-	public static long rekursivePotenz(long anz, long hoch) {
-		if(hoch <= 1) {
-			return anz;
-		}else {
-			return anz * rekursivePotenz(anz, hoch - 1);
+	public static int rekursivePotenz(int anz, int hoch) {
+		long zeit = System.currentTimeMillis();
+		if(anz <= 0) {
+			return -1;
 		}
+		if(hoch <= 1) {
+			System.out.println("Zeit ist:" + (System.currentTimeMillis() - zeit));
+			return anz;
+		}
+			return anz * rekursivePotenz(anz, hoch - 1);
+	}
+
+	
+	public static int endRekursiveSumme(int anz) {
+		if(anz < 0) {			
+			return -1;
+		}
+		return rechenRekursiveSumme(0,anz);
+	}
+	
+	public static int rechenRekursiveSumme(int start, int anz) {
+		long zeit = System.currentTimeMillis();
+		if(anz == 0) {
+			System.out.println("Zeit ist:" + (System.currentTimeMillis() - zeit));
+			return start;
+		}	
+		return rechenRekursiveSumme(start + anz, anz - 1);
+	}
+
+	public static int endRekursivesProdukt(int anz) {
+		if(anz < 0) {
+			return -1;
+		}
+		return rechenRekursivesProdukt(1,anz);
+	}
+	
+	public static int rechenRekursivesProdukt(int start, int anz) {
+		long zeit = System.currentTimeMillis();
+		if(anz == 0) {
+			System.out.println("Zeit ist:" + (System.currentTimeMillis() - zeit));
+			return start;
+		}	
+		return rechenRekursivesProdukt(start * anz, anz - 1);
+	}
+
+	public static int endRekursivePotenz(int anz, int hoch) {
+		if(hoch <= 0) {
+			return 1;
+		}
+		return rechenRekursivePotenz(anz, anz, hoch);
+	}
+	
+	public static int rechenRekursivePotenz(int anz, int hilfe, int hoch) {
+		long zeit = System.currentTimeMillis();
+		if(hoch == 1) {
+			System.out.println("Zeit ist:" + (System.currentTimeMillis() - zeit));
+			return anz;
+		}
+		return rechenRekursivePotenz(anz * hilfe, hilfe, hoch - 1);
 	}
 }
