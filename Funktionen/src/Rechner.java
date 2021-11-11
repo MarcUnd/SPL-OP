@@ -4,12 +4,12 @@ public class Rechner {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub		
 		System.out.println(rekursiveSumme(5000));
-		System.out.println(rekursivesProdukt(50));
+		System.out.println(rekursivesProdukt(30));
 		System.out.println(rekursivePotenz(50,5));
 		System.out.println(endRekursiveSumme(5000));
-		System.out.println(endRekursivesProdukt(50));
+		System.out.println(endRekursivesProdukt(30));
 		System.out.println(endRekursivePotenz(50,5));
-		// Zeitmessung bringt nichts, sogar mit float kommt keine Zeit heraus
+		
 	}
 
 
@@ -58,12 +58,12 @@ public class Rechner {
 
 	
 	public static int rekursiveSumme(int anz) {
-		long zeit = System.currentTimeMillis();
+		long zeit = System.nanoTime();
 		if(anz <= 0) {
 			return -1;
 		}
 		if(anz <= 1) {
-			System.out.println("Zeit ist:" + (System.currentTimeMillis() - zeit));
+			System.out.println("Zeit ist:" + (System.nanoTime() - zeit));
 			return 1;
 		}
 			return anz + rekursiveSumme(anz - 1);
@@ -71,12 +71,12 @@ public class Rechner {
 	}
 	
 	public static int rekursivesProdukt(int anz) {
-		long zeit = System.currentTimeMillis();
+		long zeit = System.nanoTime();
 		if(anz <= 0) {
 			return -1;
 		}
 		if(anz <= 1) {
-			System.out.println("Zeit ist:" + (System.currentTimeMillis() - zeit));
+			System.out.println("Zeit ist:" + (System.nanoTime() - zeit));
 			return 1;
 		}
 			return anz * rekursivesProdukt(anz - 1);
@@ -84,12 +84,12 @@ public class Rechner {
 	}
 
 	public static int rekursivePotenz(int anz, int hoch) {
-		long zeit = System.currentTimeMillis();
+		long zeit = System.nanoTime();
 		if(anz <= 0) {
 			return -1;
 		}
 		if(hoch <= 1) {
-			System.out.println("Zeit ist:" + (System.currentTimeMillis() - zeit));
+			System.out.println("Zeit ist:" + (System.nanoTime() - zeit));
 			return anz;
 		}
 			return anz * rekursivePotenz(anz, hoch - 1);
@@ -104,9 +104,9 @@ public class Rechner {
 	}
 	
 	public static int rechenRekursiveSumme(int start, int anz) {
-		long zeit = System.currentTimeMillis();
+		long zeit = System.nanoTime();
 		if(anz == 0) {
-			System.out.println("Zeit ist:" + (System.currentTimeMillis() - zeit));
+			System.out.println("Zeit ist:" + (System.nanoTime() - zeit));
 			return start;
 		}	
 		return rechenRekursiveSumme(start + anz, anz - 1);
@@ -120,9 +120,9 @@ public class Rechner {
 	}
 	
 	public static int rechenRekursivesProdukt(int start, int anz) {
-		long zeit = System.currentTimeMillis();
+		long zeit = System.nanoTime();
 		if(anz == 0) {
-			System.out.println("Zeit ist:" + (System.currentTimeMillis() - zeit));
+			System.out.println("Zeit ist:" + (System.nanoTime() - zeit));
 			return start;
 		}	
 		return rechenRekursivesProdukt(start * anz, anz - 1);
@@ -136,9 +136,9 @@ public class Rechner {
 	}
 	
 	public static int rechenRekursivePotenz(int anz, int hilfe, int hoch) {
-		long zeit = System.currentTimeMillis();
+		long zeit = System.nanoTime();
 		if(hoch == 1) {
-			System.out.println("Zeit ist:" + (System.currentTimeMillis() - zeit));
+			System.out.println("Zeit ist:" + (System.nanoTime() - zeit));
 			return anz;
 		}
 		return rechenRekursivePotenz(anz * hilfe, hilfe, hoch - 1);
