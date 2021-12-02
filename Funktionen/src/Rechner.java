@@ -3,18 +3,20 @@ public class Rechner {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub		
-		System.out.println(rekursiveSumme(5000));
+		/**System.out.println(rekursiveSumme(5000));
 		System.out.println(rekursivesProdukt(30));
 		System.out.println(rekursivePotenz(50,5));
 		System.out.println(endRekursiveSumme(5000));
 		System.out.println(endRekursivesProdukt(30));
-		System.out.println(endRekursivePotenz(50,5));
+		System.out.println(endRekursivePotenz(50,5));**/
+		
+		System.out.println(iterativePotenz(2,5));
 		
 	}
 
 
 	public static int iterativeSumme(int anz) {
-		int result = 1;
+		int result = 0;
 		
 		if(anz <= 0) {
 			return -1;

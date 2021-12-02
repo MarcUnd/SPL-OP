@@ -1,3 +1,5 @@
+package src;
+
 
 public class Zähler {
 
@@ -15,7 +17,7 @@ public class Zähler {
 	public static String getIterativeSuche(int[] arr, int g) {
 		long start = System.currentTimeMillis();
 		int zähler = 0;
-		for(int i = 0; i < arr.length; i++) {
+		for(int i = 0; i < arr.length; i++) {	
 			zähler++;
 			if(arr[i] == g) {
 				long stop = System.currentTimeMillis() - start;
@@ -30,7 +32,7 @@ public class Zähler {
 		int zähler = 0;
 		int index = -1;
 		long stop = 0;
-		long start = System.currentTimeMillis();
+		//long start = System.currentTimeMillis();
 		
 		while(u <= o) {
 			zähler++;
@@ -40,7 +42,7 @@ public class Zähler {
 			}else if(arr[mid] < g) {
 				u = mid + 1;
 			}else if(arr[mid] == g) {
-				stop = System.currentTimeMillis() - start;
+				//stop = System.currentTimeMillis() - start;
 				index = mid;
 				break;
 			}
